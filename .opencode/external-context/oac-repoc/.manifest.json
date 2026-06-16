@@ -1,0 +1,50 @@
+{
+  "library": "REPOC",
+  "package": "oac-repoc",
+  "fetched": "2026-06-16",
+  "source": "REPOC",
+  "files": [
+    {
+      "filename": "01_estructura-completa-opencode.md",
+      "topic": "estructura-completa-opencode",
+      "description": "Mapa completo del directorio .opencode/ con propósito de cada subdirectorio y archivo relevante",
+      "fetched": "2026-06-16"
+    },
+    {
+      "filename": "02_agents-catalogo.md",
+      "topic": "agents-catalogo",
+      "description": "Catálogo de todos los agentes y subagentes definidos en .opencode/agent/",
+      "fetched": "2026-06-16"
+    },
+    {
+      "filename": "03_comandos-personalizados.md",
+      "topic": "comandos-personalizados",
+      "description": "Catálogo de los 18 comandos slash definidos en .opencode/command/",
+      "fetched": "2026-06-16"
+    },
+    {
+      "filename": "04_skills-instalados.md",
+      "topic": "skills-instalados",
+      "description": "Catálogo de los 10 skills disponibles en .opencode/skills/",
+      "fetched": "2026-06-16"
+    },
+    {
+      "filename": "05_mcp-servers-configurados.md",
+      "topic": "mcp-servers-configurados",
+      "description": "Documentación de los 3 servidores MCP instalados (hugo-mcp, hugo-memex, hugo-docs-mcp)",
+      "fetched": "2026-06-16"
+    },
+    {
+      "filename": "06_plugins-y-herramientas.md",
+      "topic": "plugins-y-herramientas",
+      "description": "Plugins del sistema de eventos y herramientas personalizadas (tool/) del REPOC",
+      "fetched": "2026-06-16"
+    },
+    {
+      "filename": "07_scripts-de-arranque.md",
+      "topic": "scripts-de-arranque",
+      "description": "Documentación del script de bootstrap install-tools.sh que reinstala herramientas en REPON",
+      "fetched": "2026-06-16"
+    }
+  ]
+}

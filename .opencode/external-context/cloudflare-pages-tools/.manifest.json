@@ -1,0 +1,16 @@
+{
+  "library": "Cloudflare",
+  "package": "cloudflare-pages-tools",
+  "fetched": "2026-06-16T12:00:00Z",
+  "source": "Web Research (websearch, webfetch, Context7)",
+  "official_docs": "https://developers.cloudflare.com/pages/",
+  "files": [
+    {
+      "filename": "investigacion-herramientas.md",
+      "topic": "Herramientas para Cloudflare Pages",
+      "description": "Investigación exhaustiva de herramientas para gestionar Cloudflare Pages",
+      "fetched": "2026-06-16T12:00:00Z",
+      "source": "Web Research (websearch, webfetch, Context7)"
+    }
+  ]
+}

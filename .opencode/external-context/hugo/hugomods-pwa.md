@@ -1,3 +1,12 @@
+---
+source: Context7 API
+library: Hugo
+package: hugo
+topic: HugoMods PWA
+fetched: 2026-06-16
+official_docs: https://hugomods.com/en/docs/pwa/
+---
+
 # HugoMods PWA Module
 
 **Purpose**: Convert Hugo site into a Progressive Web App with service worker, manifest.json, and offline support.

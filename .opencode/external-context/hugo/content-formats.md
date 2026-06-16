@@ -1,6 +1,7 @@
 ---
 source: Context7 API + Documentación oficial Hugo
 library: Hugo
+package: hugo
 topic: Content Formats
 fetched: 2026-06-16
 official_docs: https://gohugo.io/content-management/formats/

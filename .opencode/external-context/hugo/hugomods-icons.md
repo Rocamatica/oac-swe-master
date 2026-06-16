@@ -1,3 +1,12 @@
+---
+source: Context7 API
+library: Hugo
+package: hugo
+topic: HugoMods Icons
+fetched: 2026-06-16
+official_docs: https://hugomods.com/en/docs/icons/
+---
+
 # HugoMods Icons Module
 
 **Purpose**: SVG icon shortcodes from Bootstrap, Font Awesome, Material Design, and Simple Icons. Renders icons inline without loading icon font CSS.

@@ -1,108 +1,96 @@
-<!-- Context: project-intelligence/technical | Priority: high | Version: 1.0 | Updated: 2025-01-12 -->
+<!-- Context: project-intelligence/technical | Priority: critical | Version: 2.0 | Updated: 2026-06-16 -->
 
 # Technical Domain
 
-> Document the technical foundation, architecture, and key decisions.
+> Project documentation site powered by Hugo Extended + Pagefind, orchestrated by OpenAgents Control (OAC) v0.7.1 via MCP stdio, CLI tools, and delegated subagents. All deployment through Cloudflare Pages — no GitHub CI/CD.
 
 ## Quick Reference
 
-- **Purpose**: Understand how the project works technically
-- **Update When**: New features, refactoring, tech stack changes
-- **Audience**: Developers, DevOps, technical stakeholders
+| Aspect | Detail |
+|--------|--------|
+| **Purpose** | Understand the technical stack, patterns, conventions, and security posture of the Hugo/OAC project |
+| **Update When** | Tool version bumps, new MCPs, skill/command additions, convention changes |
+| **Audience** | Developers, AI agents, DevOps, technical stakeholders |
+| **Key Principle** | MVI — every context file <200 lines, scannable in <30s |
 
 ## Primary Stack
 
 | Layer | Technology | Version | Rationale |
 |-------|-----------|---------|-----------|
-| Language | [e.g., TypeScript] | [Version] | [Why this language] |
-| Framework | [e.g., Node.js] | [Version] | [Why this framework] |
-| Database | [e.g., PostgreSQL] | [Version] | [Why this database] |
-| Infrastructure | [e.g., AWS, Vercel] | [N/A] | [Why this infra] |
-| Key Libraries | [List important ones] | [Versions] | [Why each matters] |
+| SSG | Hugo Extended | v0.163.2 | Go-based static site generation, fast builds, flexible templating |
+| Language | Go (templates) + Markdown | — | Hugo template engine for layouts; content in Markdown |
+| Search | Pagefind | v1.5.2 | Static search index, zero external dependencies at runtime |
+| Audit | agentic-seo | v1.0.0 | SEO automation and content quality auditing |
+| Audit | seofor.dev | v3.0.1 | Go-based SEO analyzer, CLI via `seo` binary |
+| Deploy | Cloudflare Pages (Wrangler) | v4.101.0 | Edge deployment, low latency, generous free tier |
+| Orchestration | OpenAgents Control (OAC) | v0.7.1 | AI-agent workflow orchestration via MCP stdio + subagent delegation |
 
-## Architecture Pattern
+## Code Patterns
 
-```
-Type: [Monolith | Microservices | Serverless | Agent-based | Hybrid]
-Pattern: [Brief description]
-Diagram: [Link to architecture diagram if exists]
-```
+### API / Interface Pattern
 
-### Why This Architecture?
+| Interface | Details |
+|-----------|---------|
+| **MCP stdio** (3 servers) | `hugo-mcp` (content CRUD), `hugo-memex` (FTS5 search), `hugo-docs-mcp` (quality audit) |
+| **CLI npm/Go** | `pagefind`, `agentic-seo`, `seo` (seofor.dev), `wrangler` |
+| **OCA delegation** | `task(subagent_type="...")` → specialized subagents |
+| **Slash commands** | `/hugo-deploy`, `/commit`, `/context`, `/add-context`, etc. |
 
-[Explain the business and technical reasons for this architecture choice. What problem does this architecture solve? What were alternatives considered?]
+### Component Pattern
 
-## Project Structure
+| Component Type | Location | Count |
+|----------------|----------|-------|
+| **Skills** | `.opencode/skills/<skill>/SKILL.md` | 10 (7 Hugo + 3 OAC) |
+| **Commands** | `.opencode/command/<name>.md` | 18 total |
+| **Context files** | `.opencode/context/` (function-based) | Category-organized |
+| **External context** | `.opencode/external-context/` (package-based) | Per-library/package |
+| **Hugo content** | `content/` pages + `layouts/` templates | Markdown + YAML frontmatter |
 
-```
-[Project Root]
-├── src/                    # Source code
-├── tests/                  # Test files
-├── docs/                   # Documentation
-├── scripts/                # Build/deploy scripts
-└── [Other key directories]
-```
+## Naming Conventions
 
-**Key Directories**:
-- `src/` - Contains all application logic organized by [module/feature/domain]
-- `tests/` - [How tests are organized]
-- `docs/` - [What documentation lives here]
+| Artifact | Convention | Example |
+|----------|-----------|---------|
+| Markdown files | kebab-case | `technical-domain.md` |
+| Index files | numeric prefix `NN_` | `01_estructura-completa.md` |
+| Skills | kebab-case | `hugo-mcp-adapter` |
+| Commands | kebab-case | `add-context` |
+| Scripts | kebab-case | `install-tools.sh` |
+| TS/Go functions | camelCase | `getContent()` |
+| TS/Go types/classes | PascalCase | `ContentManager` |
 
-## Key Technical Decisions
+## Code Standards
 
-| Decision | Rationale | Impact |
-|----------|-----------|--------|
-| [Decision 1] | [Why this choice] | [What it enables] |
-| [Decision 2] | [Why this choice] | [What it enables] |
+- **MVI**: Every context file <200 lines, scannable <30s. Formula: concept (1-3 frases) + puntos clave (3-5) + ejemplo mínimo + referencia a código
+- **Frontmatter**: HTML `<!-- -->` for `.opencode/context/`; YAML `---` for `.opencode/external-context/`
+- **Skills**: Written in English, standard OAC `.md` format. One skill = one directory + `SKILL.md`
+- **MCPs**: Python in venv (not global), Go compiled to binary. Communication via MCP stdio only
+- **Deployment**: Wrangler + Cloudflare Pages exclusively. No GitHub Actions or CI/CD
+- **Build pipeline**: `hugo --minify --gc` → `pagefind --source public` → `wrangler pages deploy`
+- **Version pinning**: All tool versions frozen in `.opencode/scripts/install-tools.sh` for reproducibility
 
-See `decisions-log.md` for full decision history with alternatives.
+## Security Requirements
 
-## Integration Points
+- **API keys**: Environment variables (`.env`) only, never hardcoded. `.env` in `.gitignore`
+- **OCA permissions**: `sudo * deny`, `**/*.env* deny`, `rm -rf * ask`
+- **MCP isolation**: Each MCP in its own venv/binary; local communication via stdio (no ports exposed)
+- **Wrangler auth**: Manual `wrangler login` per REPON (not automatable)
+- **Version lock**: All dependency versions frozen in `install-tools.sh` for deterministic builds
 
-| System | Purpose | Protocol | Direction |
-|--------|---------|----------|-----------|
-| [API 1] | [What it does] | [REST/GraphQL/gRPC] | [Inbound/Outbound] |
-| [Database] | [What it stores] | [PostgreSQL/Mongo/etc] | [Internal] |
-| [Service] | [What it provides] | [HTTP/gRPC] | [Outbound] |
+## 📂 Codebase References
 
-## Technical Constraints
-
-| Constraint | Origin | Impact |
-|------------|--------|--------|
-| [Legacy systems] | [Business/Tech] | [What limitation it creates] |
-| [Compliance] | [Regulation] | [What must be followed] |
-| [Performance] | [SLAs] | [What must be met] |
-
-## Development Environment
-
-```
-Setup: [Quick setup command or link]
-Requirements: [What developers need installed]
-Local Dev: [How to run locally]
-Testing: [How to run tests]
-```
-
-## Deployment
-
-```
-Environment: [Production/Staging/Development]
-Platform: [Where it deploys]
-CI/CD: [Pipeline used]
-Monitoring: [Tools for observability]
-```
-
-## Onboarding Checklist
-
-- [ ] Know the primary tech stack
-- [ ] Understand the architecture pattern and why it was chosen
-- [ ] Know the key project directories and their purpose
-- [ ] Understand major technical decisions and rationale
-- [ ] Know integration points and dependencies
-- [ ] Be able to set up local development environment
-- [ ] Know how to run tests and deploy
+| Reference | Location | Purpose |
+|-----------|----------|---------|
+| Tool installer | `.opencode/scripts/install-tools.sh` | Versions pinned here for all tools |
+| MCP configs | `.opencode/mcp/*/.mcp.json` | MCP server definitions |
+| Skills | `.opencode/skills/*/SKILL.md` | Skill definitions (7 Hugo + 3 OAC) |
+| Commands | `.opencode/command/*.md` | Slash command implementations (18 total) |
+| Hugo source | `content/` + `layouts/` | Site content and templates |
+| OAC plugin | `.opencode/package.json` | `@opencode-ai/plugin@1.17.7` |
 
 ## Related Files
 
-- `business-domain.md` - Why this technical foundation exists
-- `business-tech-bridge.md` - How business needs map to technical solutions
-- `decisions-log.md` - Full decision history with context
+- `business-domain.md` — Business context and problem the tech serves
+- `business-tech-bridge.md` — How business needs map to technical solutions
+- `decisions-log.md` — Full decision history with rationale (tool choices, architecture)
+- `living-notes.md` — Active issues, tech debt, open questions
+- `navigation.md` — Quick-start index for project intelligence

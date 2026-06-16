@@ -1,3 +1,12 @@
+---
+source: Context7 API
+library: Hugo
+package: hugo
+topic: HugoMods Bootstrap
+fetched: 2026-06-16
+official_docs: https://hugomods.com/en/docs/bootstrap/
+---
+
 # HugoMods Bootstrap Module
 
 **Purpose**: Integrate Bootstrap 5 CSS framework with Hugo Pipes. Includes responsive grid, components, and utilities via SCSS.

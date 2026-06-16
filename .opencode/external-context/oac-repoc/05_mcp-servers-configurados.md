@@ -1,8 +1,11 @@
 ---
 source: REPOC (oac-swe-master)
+library: REPOC
+package: oac-repoc
 topic: mcp-servers-configurados
 fetched: 2026-06-16
 version: v0.7.1
+official_docs: ""
 ---
 
 # MCP servers configurados

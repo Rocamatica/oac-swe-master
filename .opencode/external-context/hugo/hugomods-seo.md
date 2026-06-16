@@ -1,3 +1,12 @@
+---
+source: Context7 API
+library: Hugo
+package: hugo
+topic: HugoMods SEO
+fetched: 2026-06-16
+official_docs: https://hugomods.com/en/docs/seo/
+---
+
 # HugoMods SEO Module
 
 **Purpose**: Generate meta tags (Open Graph, Twitter Cards) and Schema.org structured data automatically from frontmatter.

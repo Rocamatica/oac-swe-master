@@ -1,3 +1,12 @@
+---
+source: Context7 API
+library: Hugo
+package: hugo
+topic: HugoMods Images
+fetched: 2026-06-16
+official_docs: https://hugomods.com/en/docs/images/
+---
+
 # HugoMods Images Module
 
 **Purpose**: Image processing shortcodes for Markdown content. Resize, crop, WebP/AVIF, lazy loading, figures with caption.

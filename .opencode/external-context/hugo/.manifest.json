@@ -1,6 +1,7 @@
 {
-  "library": "hugo",
-  "fetched": "2026-06-16T00:00:00Z",
+  "library": "Hugo",
+  "package": "hugo",
+  "fetched": "2026-06-16",
   "source": "Context7 API",
   "official_docs": "https://gohugo.io/documentation/",
   "files": [
@@ -8,29 +9,133 @@
       "filename": "archetypes.md",
       "topic": "Archetypes",
       "description": "Creación, estructura, ejemplos y orden de búsqueda de archetypes",
-      "fetched": "2026-06-16T00:00:00Z",
-      "source": "Context7 API"
+      "fetched": "2026-06-16",
+      "official_docs": "https://gohugo.io/content-management/archetypes/"
+    },
+    {
+      "filename": "cascade.md",
+      "topic": "Cascade",
+      "description": "Herencia de front matter de una sección a sus páginas hijas",
+      "fetched": "2026-06-16",
+      "official_docs": "https://gohugo.io/content-management/front-matter/#cascade"
     },
     {
       "filename": "configuration.md",
       "topic": "Configuration",
       "description": "Configuración base hugo.toml, variables principales, multilingüe, menús, config directory",
-      "fetched": "2026-06-16T00:00:00Z",
-      "source": "Context7 API"
+      "fetched": "2026-06-16",
+      "official_docs": "https://gohugo.io/configuration/introduction/"
+    },
+    {
+      "filename": "content-formats.md",
+      "topic": "Content Formats",
+      "description": "Los 6 formatos de contenido soportados por Hugo",
+      "fetched": "2026-06-16",
+      "official_docs": "https://gohugo.io/content-management/formats/"
     },
     {
       "filename": "directory-structure.md",
       "topic": "Directory Structure",
       "description": "Estructura completa del proyecto, propósito de cada directorio, secciones en content/",
-      "fetched": "2026-06-16T00:00:00Z",
-      "source": "Context7 API"
+      "fetched": "2026-06-16",
+      "official_docs": "https://gohugo.io/getting-started/directory-structure/"
+    },
+    {
+      "filename": "hugo-install.md",
+      "topic": "hugo-install",
+      "description": "Versión e instalación de Hugo Extended usada por REPOC/REPON",
+      "fetched": "2026-06-16"
+    },
+    {
+      "filename": "hugomods-analytics.md",
+      "topic": "HugoMods Analytics",
+      "description": "Integración de servicios de analítica (Google Analytics, Cloudflare, Umami, Plausible)",
+      "fetched": "2026-06-16",
+      "official_docs": "https://hugomods.com/en/docs/analytics/"
+    },
+    {
+      "filename": "hugomods-bootstrap.md",
+      "topic": "HugoMods Bootstrap",
+      "description": "Integración de Bootstrap 5 CSS framework con Hugo Pipes",
+      "fetched": "2026-06-16",
+      "official_docs": "https://hugomods.com/en/docs/bootstrap/"
+    },
+    {
+      "filename": "hugomods-icons.md",
+      "topic": "HugoMods Icons",
+      "description": "Shortcodes de iconos SVG de Bootstrap, Font Awesome, Material Design y Simple Icons",
+      "fetched": "2026-06-16",
+      "official_docs": "https://hugomods.com/en/docs/icons/"
+    },
+    {
+      "filename": "hugomods-images.md",
+      "topic": "HugoMods Images",
+      "description": "Shortcodes de procesamiento de imágenes: resize, crop, WebP/AVIF, lazy loading",
+      "fetched": "2026-06-16",
+      "official_docs": "https://hugomods.com/en/docs/images/"
+    },
+    {
+      "filename": "hugomods-pwa.md",
+      "topic": "HugoMods PWA",
+      "description": "Conversión del sitio Hugo en Progressive Web App con service worker",
+      "fetched": "2026-06-16",
+      "official_docs": "https://hugomods.com/en/docs/pwa/"
+    },
+    {
+      "filename": "hugomods-seo.md",
+      "topic": "HugoMods SEO",
+      "description": "Generación de meta tags (Open Graph, Twitter Cards) y Schema.org structured data",
+      "fetched": "2026-06-16",
+      "official_docs": "https://hugomods.com/en/docs/seo/"
+    },
+    {
+      "filename": "menus-frontmatter.md",
+      "topic": "Menus from Front Matter",
+      "description": "Definición de menús desde front matter en lugar de hugo.toml",
+      "fetched": "2026-06-16",
+      "official_docs": "https://gohugo.io/content-management/menus/"
+    },
+    {
+      "filename": "page-bundles.md",
+      "topic": "Page Bundles",
+      "description": "Organización de contenido en Page Bundles: leaf y branch bundles",
+      "fetched": "2026-06-16",
+      "official_docs": "https://gohugo.io/content-management/page-bundles/"
+    },
+    {
+      "filename": "pagination.md",
+      "topic": "Pagination",
+      "description": "Paginación en Hugo: configuración y templates",
+      "fetched": "2026-06-16",
+      "official_docs": "https://gohugo.io/templates/pagination/"
+    },
+    {
+      "filename": "shortcodes.md",
+      "topic": "Shortcodes",
+      "description": "Shortcodes en Hugo: creación, uso, paso de parámetros",
+      "fetched": "2026-06-16",
+      "official_docs": "https://gohugo.io/content-management/shortcodes/"
+    },
+    {
+      "filename": "summaries.md",
+      "topic": "Summaries",
+      "description": "Resúmenes de contenido en Hugo: manual, automático y front matter",
+      "fetched": "2026-06-16",
+      "official_docs": "https://gohugo.io/content-management/summaries/"
+    },
+    {
+      "filename": "taxonomies.md",
+      "topic": "Taxonomies",
+      "description": "Taxonomías en Hugo: tags, categories y taxonomías personalizadas",
+      "fetched": "2026-06-16",
+      "official_docs": "https://gohugo.io/content-management/taxonomies/"
     },
     {
       "filename": "templates.md",
       "topic": "Templates",
-      "description": "Jerarquía de plantillas: baseof, home, single, list, partials, lookup order, front matter",
-      "fetched": "2026-06-16T00:00:00Z",
-      "source": "Context7 API"
+      "description": "Jerarquía de plantillas: baseof, home, single, list, partials, lookup order",
+      "fetched": "2026-06-16",
+      "official_docs": "https://gohugo.io/templates/types/"
     }
   ]
 }

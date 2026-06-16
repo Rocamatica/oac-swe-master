@@ -1,8 +1,11 @@
 ---
 source: REPOC (oac-swe-master)
+library: REPOC
+package: oac-repoc
 topic: plugins-y-herramientas
 fetched: 2026-06-16
 version: v0.7.1
+official_docs: ""
 ---
 
 # Plugins y herramientas personalizadas

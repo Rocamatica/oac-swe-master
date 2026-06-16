@@ -160,9 +160,106 @@ son documentación genérica del framework OAC. Falta documentar la
 
 ---
 
+## Fase 8: Integración del sistema de contexto
+
+Registrar todo el conocimiento generado en Fases 1-7 en el sistema de contexto
+de OAC para que ContextScout pueda descubrirlo, los comandos `/context` y
+`/add-context` lo indexen, y `navigation.md` lo referencie.
+
+**Directorios afectados**:
+- `.opencode/context/` → navigation.md, project-intelligence/
+- `.opencode/external-context/oac/` (14 archivos: 7 auto-conocimiento + 7 framework)
+- `.opencode/external-context/hugo/` (19 archivos)
+- `.opencode/external-context/cloudflare-pages-tools/` (1 archivo)
+
+### Fase 8.0 — Crear prompt de actualización de contexto
+
+- [x] **8.0.1** — Crear `recursos/prompts/01_P-actualizar-contexto.md` con el bloque de texto
+       que el usuario copia-pega en OCA para ejecutar toda la Fase 8
+- [x] **8.0.2** — Incluir versión completa (7 pasos detallados) y versión rápida (una línea)
+
+### Fase 8.1 — Indexar `external-context/` en `navigation.md`
+
+- [x] **8.1.1** — Añadir ruta directa a `external-context/oac/` en la tabla de rutas rápidas de `navigation.md`
+- [x] **8.1.2** — Añadir ruta directa a `external-context/hugo/` en la tabla de rutas rápidas
+- [x] **8.1.3** — Añadir subcategoría `external-context/` en la sección "By Category"
+
+### Fase 8.2 — ContextOrganizer sobre `.opencode/external-context/`
+
+- [x] **8.2.1** — Delegar ContextOrganizer para analizar `external-context/` (34 archivos)
+- [x] **8.2.2** — **Recomendación: mantener estructura plana por tema** (package-based).
+       `external-context/` tiene propósito distinto a `context/`; la estructura
+       function-based (concepts/guides/) no aplica. 61 referencias dependen de
+       la estructura actual.
+- [x] **8.2.3** — Aplicar 5 mejoras aprobadas:
+
+  | # | Mejora | Estado |
+  |---|--------|--------|
+  | a | Crear `external-context/navigation.md` | ✅ |
+  | b | Regenerar `hugo/.manifest.json` (19/19 archivos) | ✅ |
+  | c | Crear `oac-repoc/.manifest.json` y `oac-framework/.manifest.json` | ✅ |
+  | d | Separar `oac/` → `oac-repoc/` (7 REPOC) + `oac-framework/` (7 OAC) | ✅ |
+  | e | Unificar frontmatter YAML (REPOC 7, HugoMods 6, hugo-install, Context7 8) | ✅ |
+
+### Fase 8.3 — Ejecutar `/add-context --update`
+
+El wizard interactivo de 6 preguntas que registra los patrones del proyecto
+en `.opencode/context/project-intelligence/technical-domain.md`.
+
+Preguntas del wizard:
+1. **Tech Stack** — Hugo + HugoMods + Cloudflare Pages + OAC v0.7.1
+2. **API pattern** — MCP stdio (3 servers), npm CLI tools, Go binaries
+3. **Component pattern** — Skills .md, comandos slash, contextos markdown
+4. **Naming conventions** — `kebab-case` para archivos, prefijo numérico `NN_` para índices
+5. **Code standards** — MVI (<200 líneas por contexto), referencias cruzadas, frontmatter YAML
+6. **Security requirements** — API keys en env, permisos bash denegados para sudo/*.env
+
+- [ ] **8.3.1** — Ejecutar `/add-context --update` con respuestas preparadas
+- [ ] **8.3.2** — Verificar que se crea/actualiza `.opencode/context/project-intelligence/technical-domain.md`
+- [ ] **8.3.3** — Verificar que los patrones registrados son correctos y completos
+
+### Fase 8.4 — Ejecutar `/context harvest`
+
+Extraer conocimiento de los resúmenes de sesión y documentación temporal a
+contexto permanente. Opera sobre patrones de archivo como `*OVERVIEW.md`,
+`*SUMMARY.md`, `SESSION-*.md`, etc.
+
+- [ ] **8.4.1** — Buscar archivos candidatos en el workspace (patrones de harvest)
+- [ ] **8.4.2** — Ejecutar `/context harvest`
+- [ ] **8.4.3** — Verificar que el conocimiento extraído está en contexto permanente
+- [ ] **8.4.4** — Limpiar archivos temporales si se crearon
+
+### Fase 8.5 — Ejecutar `/context organize`
+
+Revisar si los archivos de contexto existentes en `core/` y
+`project-intelligence/` necesitan reestructuración por función (concepts/,
+guides/, lookup/, errors/).
+
+- [ ] **8.5.1** — Ejecutar `/context organize` (modo dry-run primero)
+- [ ] **8.5.2** — Revisar plan de reorganización propuesto
+- [ ] **8.5.3** — Aplicar reorganización si es necesaria y está aprobada
+
+### Fase 8.6 — Ejecutar `/context validate`
+
+Verificar integridad del sistema de contexto: enlaces rotos entre archivos,
+referencias cruzadas válidas, consistencia de frontmatter.
+
+- [ ] **8.6.1** — Ejecutar `/context validate`
+- [ ] **8.6.2** — Corregir errores detectados (enlaces rotos, referencias huérfanas)
+
+### Fase 8.7 — Verificación final del ecosistema de contexto
+
+- [ ] **8.7.1** — Confirmar que ContextScout descubre los 14 archivos de `external-context/oac/`
+- [ ] **8.7.2** — Confirmar que ContextScout descubre los 19 archivos de `external-context/hugo/`
+- [ ] **8.7.3** — Confirmar que `navigation.md` referencia todos los directorios de contexto
+- [ ] **8.7.4** — Commit + push de todos los cambios de contexto
+
+---
+
 ## Notas
 
 - Skills en inglés, formato `.md` estándar de OAC
 - MCP servers en entorno virtual Python (no global)
 - No se usa CI/CD de GitHub. Solo Wrangler + Cloudflare Pages
 - El usuario no sigue pasos fijos. OCA interpreta cada petición y usa el artefacto adecuado
+- Fase 8 (context integration) es requisito para que Fase 5.1 pase (OCA debe poder descubrir todos los recursos del REPOC)

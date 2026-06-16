@@ -1,17 +1,28 @@
 {
-  "version": "1.0",
-  "last_updated": "2026-06-16T12:00:00Z",
+  "version": "2.0",
+  "last_updated": "2026-06-16",
   "libraries": {
+    "oac-repoc": {
+      "source": "REPOC",
+      "files": "7",
+      "description": "Auto-conocimiento del REPOC: estructura, agentes, comandos, skills, MCPs, tools, scripts"
+    },
+    "oac-framework": {
+      "source": "GitHub Repository (darrenhinde/OpenAgentsControl)",
+      "files": "7",
+      "description": "Documentación del framework OAC: arquitectura, workflows, contexto, integración"
+    },
+    "hugo": {
+      "source": "Context7 API",
+      "files": "19",
+      "official_docs": "https://gohugo.io/documentation/",
+      "description": "Documentación de Hugo, HugoMods y herramientas del ecosistema"
+    },
     "cloudflare-pages-tools": {
-      "files": [
-        {
-          "filename": "investigacion-herramientas.md",
-          "topic": "Comprehensive investigation of Cloudflare Pages management tools",
-          "tech_stack": "Cloudflare Pages / Workers",
-          "fetched": "2026-06-16T12:00:00Z",
-          "source": "Web Research (websearch, webfetch, Context7)"
-        }
-      ]
+      "source": "Web Research (websearch, webfetch, Context7)",
+      "files": "1",
+      "official_docs": "https://developers.cloudflare.com/pages/",
+      "description": "Investigación de herramientas para Cloudflare Pages"
     }
   }
 }

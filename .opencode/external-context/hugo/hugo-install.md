@@ -1,3 +1,12 @@
+---
+source: REPOC (oac-swe-master)
+library: Hugo
+package: hugo
+topic: hugo-install
+fetched: 2026-06-16
+official_docs: https://gohugo.io/getting-started/installing/
+---
+
 # Hugo Installation Reference
 
 **Purpose**: Version and installation guide for Hugo Extended used by REPOC/REPON.

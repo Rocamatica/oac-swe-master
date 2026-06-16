@@ -1,0 +1,59 @@
+{
+  "library": "OpenAgentsControl (OAC)",
+  "package": "@nextsystems/oac",
+  "fetched": "2026-06-16T10:00:00Z",
+  "source": "GitHub Repository (darrenhinde/OpenAgentsControl)",
+  "official_docs": "https://github.com/darrenhinde/OpenAgentsControl",
+  "version": "v0.7.1",
+  "files": [
+    {
+      "filename": "agent-workflows.md",
+      "topic": "agent-workflows",
+      "description": "Workflows de OpenAgent, OpenCoder y TaskManager con estrategias de ejecución paralela",
+      "fetched": "2026-06-16T10:00:00Z",
+      "official_docs": "https://github.com/darrenhinde/OpenAgentsControl"
+    },
+    {
+      "filename": "architecture-overview.md",
+      "topic": "architecture-overview",
+      "description": "Arquitectura general de OAC: agentes, contexto, eventos, permisos",
+      "fetched": "2026-06-16T10:00:00Z",
+      "official_docs": "https://github.com/darrenhinde/OpenAgentsControl"
+    },
+    {
+      "filename": "configuration-deployment.md",
+      "topic": "configuration-deployment",
+      "description": "Instalación, configuración, CI/CD, perfiles, workflows de equipo",
+      "fetched": "2026-06-16T10:00:00Z",
+      "official_docs": "https://github.com/darrenhinde/OpenAgentsControl"
+    },
+    {
+      "filename": "context-system-architecture.md",
+      "topic": "context-system-architecture",
+      "description": "Cómo interactúan ContextScout, ExternalScout y /add-context; jerarquía de contexto",
+      "fetched": "2026-06-16T10:00:00Z",
+      "official_docs": "https://github.com/darrenhinde/OpenAgentsControl/blob/main/CONTEXT_SYSTEM_GUIDE.md"
+    },
+    {
+      "filename": "opencode-integration.md",
+      "topic": "opencode-integration",
+      "description": "Cómo OAC extiende OpenCode: agentes, subagentes, contexto, comandos, skills",
+      "fetched": "2026-06-16T10:00:00Z",
+      "official_docs": "https://github.com/darrenhinde/OpenAgentsControl"
+    },
+    {
+      "filename": "profile-validation.md",
+      "topic": "profile-validation",
+      "description": "Validación de perfiles en registry.json, reglas de asignación y errores comunes",
+      "fetched": "2026-06-16T10:00:00Z",
+      "official_docs": "https://github.com/darrenhinde/OpenAgentsControl/blob/main/.opencode/context/openagents-repo/guides/profile-validation.md"
+    },
+    {
+      "filename": "registry-and-profiles.md",
+      "topic": "registry-and-profiles",
+      "description": "Sistema de registro central (registry.json) y perfiles de instalación",
+      "fetched": "2026-06-16T10:00:00Z",
+      "official_docs": "https://github.com/darrenhinde/OpenAgentsControl/blob/main/registry.json"
+    }
+  ]
+}

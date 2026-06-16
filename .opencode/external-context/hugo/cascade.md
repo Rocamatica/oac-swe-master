@@ -1,6 +1,7 @@
 ---
 source: Context7 API
 library: Hugo
+package: hugo
 topic: Cascade
 fetched: 2026-06-16
 official_docs: https://gohugo.io/content-management/front-matter/#cascade

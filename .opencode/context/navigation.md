@@ -34,6 +34,8 @@
 | **Add agent** | `openagents-repo/guides/adding-agent.md` |
 | **UI development** | `development/ui-navigation.md` |
 | **API development** | `development/backend-navigation.md` |
+| **Auto-conocimiento OAC** | `external-context/oac-repoc/01_estructura-completa-opencode.md` |
+| **Contexto Hugo** | `external-context/hugo/hugo-install.md` |
 
 ---
 
@@ -47,3 +49,4 @@
 **data/** - Data engineering → `data/navigation.md`
 **product/** - Product management → `product/navigation.md`
 **learning/** - Educational → `learning/navigation.md`
+**external-context/** - Herramientas externas y auto-conocimiento → `external-context/navigation.md`

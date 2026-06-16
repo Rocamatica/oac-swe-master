@@ -1,3 +1,12 @@
+---
+source: Context7 API
+library: Hugo
+package: hugo
+topic: HugoMods Analytics
+fetched: 2026-06-16
+official_docs: https://hugomods.com/en/docs/analytics/
+---
+
 # HugoMods Analytics Module
 
 **Purpose**: Integrate analytics services (Google Analytics, Cloudflare, Umami, Plausible) into the Hugo site without modifying layouts.
