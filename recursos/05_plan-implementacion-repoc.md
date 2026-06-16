@@ -129,6 +129,35 @@ Documentación para el usuario final del REPOC. Instrucciones paso a paso sobre 
 - [x] **6.6** — `03_modulos-hugomods.md` (277 líneas)
 - [x] **6.7** — `07_cms-decap.md` (293 líneas)
 
+## Fase 7: Auto-conocimiento del REPOC (`.opencode/external-context/oac/`)
+
+Documentar la propia estructura `.opencode/` del REPOC para que OCA conozca
+sus propios recursos: qué agentes, comandos, skills, MCPs, herramientas,
+plugins y scripts tiene disponibles. Esto es el "auto-conocimiento" del
+repositorio.
+
+**Motivación**: Los 7 archivos actuales en `.opencode/external-context/oac/`
+son documentación genérica del framework OAC. Falta documentar la
+**configuración concreta** de este REPOC.
+
+| # | Archivo | Ruta | Finalidad |
+|---|---------|------|-----------|
+| 7.1 | `estructura-completa-opencode.md` | `.opencode/external-context/oac/01_estructura-completa-opencode.md` | Mapa completo del árbol `.opencode/` con propósito de cada directorio y archivo |
+| 7.2 | `agents-catalogo.md` | `.opencode/external-context/oac/02_agents-catalogo.md` | Catálogo de los 3 agentes primarios + 16 subagentes |
+| 7.3 | `comandos-personalizados.md` | `.opencode/external-context/oac/03_comandos-personalizados.md` | Catálogo de los 18 comandos slash personalizados |
+| 7.4 | `skills-instalados.md` | `.opencode/external-context/oac/04_skills-instalados.md` | Los 8 skills instalados y sus capacidades |
+| 7.5 | `mcp-servers-configurados.md` | `.opencode/external-context/oac/05_mcp-servers-configurados.md` | Los 3 MCP servers integrados (hugo-mcp, hugo-memex, hugo-docs-mcp) |
+| 7.6 | `plugins-y-herramientas.md` | `.opencode/external-context/oac/06_plugins-y-herramientas.md` | Plugin notify.ts + herramientas env/gemini |
+| 7.7 | `scripts-de-arranque.md` | `.opencode/external-context/oac/07_scripts-de-arranque.md` | Script install-tools.sh y rutas de bootstrap |
+
+- [x] **7.1** — `01_estructura-completa-opencode.md` (256 líneas)
+- [x] **7.2** — `02_agents-catalogo.md` (143 líneas)
+- [x] **7.3** — `03_comandos-personalizados.md` (95 líneas)
+- [x] **7.4** — `04_skills-instalados.md` (112 líneas)
+- [x] **7.5** — `05_mcp-servers-configurados.md` (137 líneas)
+- [x] **7.6** — `06_plugins-y-herramientas.md` (133 líneas)
+- [x] **7.7** — `07_scripts-de-arranque.md` (132 líneas)
+
 ---
 
 ## Notas
