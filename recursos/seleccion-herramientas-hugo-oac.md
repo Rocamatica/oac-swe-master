@@ -1,10 +1,10 @@
 # Selección curada de herramientas Hugo para OAC
 
-**Propósito**: Catálogo seleccionado de herramientas, MCP servers, módulos y servicios del ecosistema Hugo que OAC (OpenAgent) usará mediante delegación. Cada entrada define el artefacto OAC concreto que la envuelve y cómo se integra en la tríada Usuario ↔ OAC ↔ Hugo.
+**Propósito**: Catálogo seleccionado de herramientas, MCP servers, módulos y servicios del ecosistema Hugo que OAC (OpenAgent) usará mediante delegación. Cada entrada define el artefacto OAC concreto que la envuelve y cómo OCA decide usarla según la intención del usuario.
 
 **Fecha**: 2026-06-16
 
-**Fuente**: `en_des/preparacion-inicial/notas/09-investigacion-skills-hugo.md`
+**Fuente**: Investigación original del ecosistema Hugo (2026-06-15)
 
 **Principio**: No reinventar. Aprovechar lo existente. OCA orquesta delegando en skills, MCPs, módulos y herramientas probadas.
 
@@ -31,7 +31,7 @@
 - [5. Módulos funcionales HugoMods](#5-módulos-funcionales-hugomods)
 - [6. Modelos arquitectónicos (referencia)](#6-modelos-arquitectónicos-referencia)
 - [7. CMS y edición visual](#7-cms-y-edición-visual)
-- [8. CI/CD y despliegue](#8-cicd-y-despliegue)
+- [8. Despliegue](#8-despliegue)
 - [9. Mapa de delegación OCA](#9-mapa-de-delegación-oca)
 
 ---
@@ -55,30 +55,10 @@
 - Si sí → OCA verifica versión vs última disponible
 - El contexto en `.opencode/external-context/hugo/` documenta la versión y uso
 
-**Flujo**: Fase A (instalación) — desencadenado por prompt 01-P
+**Flujo**: Instalación inicial — cuando el usuario solicita crear un proyecto Hugo
 
 **Seleccionado**: ✅ Sí. Evita gestionar binarios manualmente, da tipado TypeScript.
 
----
-
-### 1.2 peaceiris/actions-hugo
-
-| Campo | Valor |
-|-------|-------|
-| **Qué es** | GitHub Action oficial para instalar Hugo en runners CI/CD. La más usada del ecosistema |
-| **URL** | https://github.com/peaceiris/actions-hugo |
-| **Licencia** | Apache 2.0 |
-| **Madurez** | Muy activo (v3, TypeScript) |
-
-**Artefacto OAC**: Template reutilizable en Context file (`.opencode/context/hugo/`)
-
-**Integración**:
-- OCA genera el YAML de GitHub Actions usando este template cuando configura CI/CD en REPON
-- No se ejecuta directamente, se referencia en la configuración
-
-**Flujo**: Fase C (despliegue/CI/CD) — paso 10 del flujo Hugo
-
-**Seleccionado**: ✅ Sí. Imprescindible para CI/CD. Se incluye como template.
 
 ---
 
@@ -112,7 +92,7 @@ Subagente devuelve resultado a OCA
 OCA resume al usuario
 ```
 
-**Flujo**: Pasos 6-7 (creación de contenido) + mantenimiento continuo
+**Flujo**: Creación y edición de contenido — cuando el usuario pide crear/modificar páginas
 
 **Seleccionado**: ✅ Sí. Es el MCP más completo y activo. La pieza central para que OCA gestione contenido sin tocar archivos manualmente.
 
@@ -192,7 +172,7 @@ OCA resume al usuario
 - Configuración de indexing por idioma/section
 - OCA puede consultar el índice para responder preguntas del usuario sobre contenido
 
-**Flujo**: Paso 9 (build) — post-processing
+**Flujo**: Post-build — después de generar el sitio, indexar contenido para búsqueda
 
 **Seleccionado**: ✅ Sí. Estándar 2026, MIT, ligero. Mejor opción para búsqueda en sitios Hugo.
 
@@ -374,24 +354,25 @@ Estas herramientas NO se incorporan directamente como skills. Son **referencias 
 
 ---
 
-## 8. CI/CD y despliegue
+## 8. Despliegue
 
-### 8.1 Wrangler (Cloudflare Pages) — *Ya incluido*
+### 8.1 Wrangler (Cloudflare Pages)
 
-Ya está en el flujo Hugo (paso 10). Se mantiene como está.
+| Campo | Valor |
+|-------|-------|
+| **Qué es** | CLI oficial de Cloudflare para desplegar sitios estáticos en Cloudflare Pages |
+| **URL** | https://developers.cloudflare.com/pages/ |
+| **Licencia** | MIT (código abierto) |
+| **Madurez** | Muy activo (mantenido por Cloudflare) |
 
-### 8.2 GitHub Actions template
-
-**Artefacto OAC**: Template en context file
+**Artefacto OAC**: Comando `/hugo-deploy` que OCA ejecuta directamente
 
 **Integración**:
-- OCA genera `.github/workflows/hugo-deploy.yml` usando peaceiris/actions-hugo
-- Configura build con `hugo --minify --gc`
-- Configura deploy a Cloudflare Pages via Wrangler
+- OCA ejecuta `hugo --minify --gc && wrangler pages deploy public/ --project-name=<nombre>`
+- No requiere GitHub Actions ni CI/CD externo
+- Despliegue directo desde el entorno de OCA
 
-**Flujo**: Paso 10 (despliegue)
-
-**Seleccionado**: ✅ Sí. Imprescindible para automatizar despliegue.
+**Seleccionado**: ✅ Sí. Única vía de despliegue. Sin necesidad de CI/CD de GitHub.
 
 ---
 
@@ -449,7 +430,7 @@ Ya está en el flujo Hugo (paso 10). Se mantiene como está.
 | Categoría | Seleccionado | Tipo OAC | Prioridad |
 |-----------|-------------|----------|-----------|
 | hugo-extended (npm) | ✅ | Comando / Context | Alta |
-| peaceiris/actions-hugo | ✅ | Template context | Media |
+| Wrangler (Cloudflare) | ✅ | Comando | Alta |
 | hugo-mcp | ✅ | Subagente | Alta |
 | hugo-memex | ✅ | Skill | Alta |
 | hugo-docs-mcp | ⏳ Condicional | Skill | Baja |
@@ -474,10 +455,9 @@ Ya está en el flujo Hugo (paso 10). Se mantiene como está.
 
 ## Referencias cruzadas
 
-- `recursos/flujos/triada-usuario-oac-hugo.md` — Arquitectura de la tríada
-- `recursos/flujos/interaccion-dinamica-inicializar-hugo.md` — Árbol de preguntas
-- `recursos/prompts/01-P-iniciar-sitio-hugo.md` — Prompt de entrada
-- `en_des/desarrollando-oac-hugo/01-chklst-pasos-1-3-interaccion-hugo.md` — Checklist de trabajo
+- `recursos/flujos/capacidades-oca-hugo.md` — Catálogo de capacidades OCA para Hugo
+- `recursos/recapitulacion-entendimiento-openagent.md` — Documento fundacional
+- `recursos/plan-implementacion-repoc.md` — Plan de implementación
 - `.opencode/external-context/hugo/` — Contexto externo de Hugo
 
 ---

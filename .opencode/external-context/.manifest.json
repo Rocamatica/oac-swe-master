@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-06-16T12:00:00Z",
+  "libraries": {
+    "cloudflare-pages-tools": {
+      "files": [
+        {
+          "filename": "investigacion-herramientas.md",
+          "topic": "Comprehensive investigation of Cloudflare Pages management tools",
+          "tech_stack": "Cloudflare Pages / Workers",
+          "fetched": "2026-06-16T12:00:00Z",
+          "source": "Web Research (websearch, webfetch, Context7)"
+        }
+      ]
+    }
+  }
+}

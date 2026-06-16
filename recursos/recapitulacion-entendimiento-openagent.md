@@ -65,7 +65,7 @@ Reglas:
 
 ## 4. Naturaleza del repositorio: base clonable
 
-Regla fundamental y transversal (extraída de `en_des/preparacion-inicial/reglas-oac-hugo.md`):
+Regla fundamental y transversal (incorporada del análisis inicial de reglas OAC+Hugo):
 
 > **"Este repositorio es una base clonable. No contiene proyectos específicos (PYT). Todo el contenido que se cree aquí debe ser reutilizable al clonar el repositorio."**
 
@@ -114,12 +114,12 @@ oac-swe-master                          nombre-del-proyecto
 | G4 | Reglas G1-G3 aplican a **todos los prompts y respuestas, siempre** | `reglas-abreviaciones.txt` |
 | G5 | **Siempre la última versión estable** de los componentes requeridos. Confirmar/verificar que sean **funcionales y no betas** | Corrección del usuario (punto 4) |
 | G6 | **No todo son prompts (P)** — usar artefactos y ventajas de OAC: skills, contextos, comandos, subagentes | Corrección del usuario (punto 3) |
-| G7 | **Explicar como tutorial paso a paso**. No adelantarse a lo que el usuario pregunta. Responder solo a lo preguntado, sin información no solicitada | `reglas-oac-hugo.md` |
-| G8 | **No ejecutar sin preguntar ni confirmar**. Antes de cualquier acción (instalar, modificar, crear archivos), preguntar primero y esperar confirmación explícita | `reglas-oac-hugo.md` |
-| G9 | **Guardar el conocimiento obtenido** de Context7, ExternalScout o cualquier fuente externa en `.opencode/external-context/<tema>/` para que esté disponible en consultas futuras | `reglas-oac-hugo.md` |
-| G10 | **OAC gestiona todo el trabajo con Hugo**. El usuario interactúa exclusivamente con OAC. OAC gestiona instalación, configuración, contenido, build y despliegue. Todo cambio se canaliza a través de OAC | `reglas-oac-hugo.md` |
-| G11 | **No duplicar información**. Cada contenido una sola vez en un único archivo. Si un contenido es necesario desde otro lugar, usar referencias (enlaces, citas) sin copiar | `reglas-oac-hugo.md` |
-| G12 | **Preparar OAC primero**. Antes de gestionar Hugo, verificar que el contexto está completo en `.opencode/external-context/hugo/` y que no hay gaps | `reglas-oac-hugo.md` |
+| G7 | **Explicar como tutorial paso a paso**. No adelantarse a lo que el usuario pregunta. Responder solo a lo preguntado, sin información no solicitada | Extraída de reglas originales (archivo eliminado, contenido aquí) |
+| G8 | **No ejecutar sin preguntar ni confirmar**. Antes de cualquier acción (instalar, modificar, crear archivos), preguntar primero y esperar confirmación explícita | Extraída de reglas originales |
+| G9 | **Guardar el conocimiento obtenido** de Context7, ExternalScout o cualquier fuente externa en `.opencode/external-context/<tema>/` para que esté disponible en consultas futuras | Extraída de reglas originales |
+| G10 | **OAC gestiona todo el trabajo con Hugo**. El usuario interactúa exclusivamente con OAC. OAC gestiona instalación, configuración, contenido, build y despliegue. Todo cambio se canaliza a través de OAC | Extraída de reglas originales |
+| G11 | **No duplicar información**. Cada contenido una sola vez en un único archivo. Si un contenido es necesario desde otro lugar, usar referencias (enlaces, citas) sin copiar | Extraída de reglas originales |
+| G12 | **Preparar OAC primero**. Antes de gestionar Hugo, verificar que el contexto está completo en `.opencode/external-context/hugo/` y que no hay gaps | Adaptada del análisis inicial |
 
 ### En una frase
 
@@ -144,19 +144,20 @@ oac-swe-master                          nombre-del-proyecto
 └── ...                   → Resto de estructura OAC
 
 recursos/                          ← SE HEREda EN REPON
-├── prompts/              → Directorio para prompts reutilizables
-└── ...                   → Otros recursos (skills, templates, etc.)
+├── recapitulacion-entendimiento-openagent.md  → Documento fundacional
+├── seleccion-herramientas-hugo-oac.md         → Catálogo de herramientas
+├── plan-implementacion-repoc.md               → Plan de implementación
+├── flujos/                                     → Flujos y capacidades
+│   └── capacidades-oca-hugo.md                → Catálogo de capacidades OCA
+└── prompts/                                    → (vacío — el usuario expresa intención directamente)
 ```
 
 ### Lo que SOLO existe en REPOC (no se hereda)
 
 ```
 en_des/                            ← NO SE HEREda
-└── preparacion-inicial/
-    ├── notas/             → Investigación, análisis, flujos de trabajo
-    ├── reglas-oac-hugo.md → Reglas de interacción OAC+Hugo
-    ├── legado/            → Análisis previos descartados
-    └── ...
+└── preparacion-inicial/           ← VACÍO (todo eliminado: notas, reglas, análisis previos)
+    └── ...                        ← Contenido ya extraído a este documento
 reglas-abreviaciones.txt           ← NO SE HEREda (permanece en REPOC como referencia)
 ```
 
@@ -176,22 +177,28 @@ reglas-abreviaciones.txt           ← NO SE HEREda (permanece en REPOC como ref
 
 ---
 
-## 8. Contenido del flujo Hugo
+## 8. Capacidades OCA para Hugo
 
-Workflow completo de 10 pasos (extraído de `01-flujo-trabajo-hugo.md`) para levantar un sitio Hugo desde cero en REPON:
+OCA no sigue un flujo fijo de pasos. En lugar de eso, el usuario expresa una **intención** en lenguaje natural y OCA responde con la **capacidad** adecuada.
 
 > **Regla de versiones**: Siempre la **última versión estable** de los componentes que sean requeridos. Hay que confirmar/verificar que sean **funcionales y no betas**. Aplica a Hugo, Wrangler, Node.js, npm, y cualquier otro componente.
 
-1. **Instalar Hugo** — Última versión estable (no betas, no RCs). Verificar antes si está instalado y si es la versión correcta.
-2. **Crear proyecto** — `hugo new site <nombre>`. El usuario proporciona el nombre.
-3. **Configurar `hugo.toml`** — No es un cuestionario estático. Debe ser una **interacción dinámica**: a medida que el usuario responde y proporciona información, se generan preguntas dependientes de las respuestas dadas, siempre dentro del marco de lo que va en `hugo.toml` (`baseURL`, `locale`, `title`, `params`, etc.).
-4. **Crear layouts** — `baseof.html`, `partials/` (head, header, footer), `home.html`, `single.html`, `list.html`
-5. **Configurar Hugo Pipes** — CSS (`assets/css/main.css`) y JS (`assets/js/main.js`) con minificación + fingerprint en producción
-6. **Crear archetypes** — `default.md` y `posts.md` con frontmatter reutilizable
-7. **Crear contenido de prueba** — `_index.md`, `posts/_index.md`, `posts/mi-primer-articulo.md`
-8. **Servidor de desarrollo** — `hugo server -D` con LiveReload en `localhost:1313`
-9. **Build de producción** — `hugo --minify --gc` (minifica + garbage collection)
-10. **Despliegue Cloudflare** — `wrangler pages project create` (primera vez) → `hugo --minify --gc && wrangler pages deploy public/`
+### Catálogo de capacidades (resumen)
+
+| # | Capacidad | Disparador (intención del usuario) | Artefacto OAC |
+|---|-----------|-----------------------------------|---------------|
+| C1 | Inicializar proyecto | "Crea un proyecto Hugo" | Directo (OCA) + `hugo-extended` |
+| C2 | Crear/gestionar contenido | "Crea una página sobre X" | Subagente → `hugo-mcp` |
+| C3 | Buscar/consultar contenido | "Busca artículos sobre Y" | Skill → `hugo-memex` |
+| C4 | Indexar búsqueda | "Quiero buscador en el sitio" | Skill → `Pagefind` |
+| C5 | Auditar SEO/AEO | "Audita el SEO" | Skills → `agentic-seo` + `seofor.dev` |
+| C6 | Configurar tema | "Usa el tema X" | Directo (OCA) |
+| C7 | Configurar CMS | "Quiero un CMS" | Skill → `Decap CMS` |
+| C8 | Configurar módulos | "Añade SEO/iconos/PWA" | Contextos → `HugoMods` |
+| C9 | Build + despliegue | "Despliega el sitio" | Comando → `wrangler` |
+| C10 | Auditoría de calidad | "Hay enlaces rotos?" | Skill → `hugo-docs-mcp` (condicional) |
+
+> **Detalle completo**: `recursos/flujos/capacidades-oca-hugo.md`
 
 ---
 
@@ -209,23 +216,16 @@ No todos los recursos del repositorio deben ser archivos de tipo "P" (prompt/ins
 | **Skill** | Comportamiento reutilizable con lógica | Un skill "hugo-init" que orquesta instalación + configuración |
 | **Comando (slash command)** | Acción rápida invocable por el usuario | `/hugo-serve` para arrancar servidor de desarrollo |
 | **Subagente** | Tarea especializada delegable | Un subagente "HugoConfigurator" para el diálogo interactivo de `hugo.toml` |
-| **Workflow (context)** | Secuencia de pasos con decisiones | Workflow de 10 pasos definido en contexto que yo sigo como OpenAgent |
-| **Prompt (P)** | Instrucción textual para el agente | `01-P-iniciar-sitio-hugo.md` como punto de entrada |
+| **Workflow (context)** | Secuencia de pasos con decisiones | Capacidades C1-C10 (`recursos/flujos/capacidades-oca-hugo.md`) |
+| **Prompt (P)** | Instrucción textual para el agente | No usado en REPOC — el usuario expresa intención en lenguaje natural |
 
 ### Filosofía
 
-> **Los prompts (P) son el punto de entrada. Los artefactos OAC (skills, contextos, comandos, subagentes) son la implementación.**
+> **Los artefactos OAC (skills, contextos, comandos, subagentes) son la implementación. El usuario expresa su intención en lenguaje natural, OCA selecciona el artefacto adecuado.**
 
-Ejemplo concreto para los pasos 2-3 (configurar `hugo.toml`):
-- En lugar de un prompt estático con preguntas fijas → **interacción dinámica**: el usuario responde, y según sus respuestas, se generan preguntas dependientes, siempre dentro del marco de `hugo.toml`.
-- Esto puede implementarse como un workflow que yo (OpenAgent) ejecuto interactivamente, apoyado por contextos y subagentes si es necesario.
-
-### El rol del prompt `01-P-iniciar-sitio-hugo.md`
-
-- Es el **punto de entrada** que activa el inicio del trabajo en una sesión de OCA
-- Marca el inicio del **framework de configuración de Hugo en REPON**
-- Debe ser **mejorado y ajustado para OCA**: no es una instrucción plana, sino el disparador de una secuencia interactiva que usa artefactos OAC
-- El usuario lo activa como **primera acción** en una sesión de OCA
+Ejemplo concreto para "Quiero crear una página de contacto":
+- En lugar de un prompt estático con instrucciones → **capacidad C2**: OCA interpreta la intención, activa el subagente `HugoMCPSpecialist`, este invoca `hugo-mcp create_page("contacto", ...)`.
+- No hay prompt de entrada, no hay workflow predefinido. OCA entiende la intención y ejecuta la capacidad correspondiente.
 
 ---
 
@@ -268,7 +268,7 @@ Ejemplo concreto para los pasos 2-3 (configurar `hugo.toml`):
 | Reglas de interacción | ✅ Cargadas y asimiladas (español RAE, no inventar, no abreviar) |
 | Regla de versiones | ✅ Corregida: "última versión estable, funcional y no beta" |
 | Contexto externo OAC | ✅ 7 archivos leídos y procesados |
-| Flujo Hugo | ✅ 10 pasos conocidos con correcciones |
+| Flujo Hugo | ✅ Reemplazado por modelo de capacidades (C1-C10) según intención del usuario |
 | Artefactos OAC | ✅ Comprendido: no todo son prompts, usar skills/contextos/comandos |
 | Restricciones | ✅ Claras y memorizadas |
 | Acción ejecutada | ❌ Ninguna aún — todo ha sido formativo/teórico |
