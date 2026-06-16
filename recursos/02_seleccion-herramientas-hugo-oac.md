@@ -455,9 +455,9 @@ Estas herramientas NO se incorporan directamente como skills. Son **referencias 
 
 ## Referencias cruzadas
 
-- `recursos/flujos/capacidades-oca-hugo.md` — Catálogo de capacidades OCA para Hugo
-- `recursos/recapitulacion-entendimiento-openagent.md` — Documento fundacional
-- `recursos/plan-implementacion-repoc.md` — Plan de implementación
+- `recursos/flujos/01_capacidades-oca-hugo.md` — Catálogo de capacidades OCA para Hugo
+- `recursos/01_recapitulacion-entendimiento-openagent.md` — Documento fundacional
+- `recursos/05_plan-implementacion-repoc.md` — Plan de implementación
 - `.opencode/external-context/hugo/` — Contexto externo de Hugo
 
 ---

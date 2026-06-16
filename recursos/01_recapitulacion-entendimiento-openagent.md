@@ -198,7 +198,7 @@ OCA no sigue un flujo fijo de pasos. En lugar de eso, el usuario expresa una **i
 | C9 | Build + despliegue | "Despliega el sitio" | Comando → `wrangler` |
 | C10 | Auditoría de calidad | "Hay enlaces rotos?" | Skill → `hugo-docs-mcp` (condicional) |
 
-> **Detalle completo**: `recursos/flujos/capacidades-oca-hugo.md`
+> **Detalle completo**: `recursos/flujos/01_capacidades-oca-hugo.md`
 
 ---
 
@@ -216,7 +216,7 @@ No todos los recursos del repositorio deben ser archivos de tipo "P" (prompt/ins
 | **Skill** | Comportamiento reutilizable con lógica | Un skill "hugo-init" que orquesta instalación + configuración |
 | **Comando (slash command)** | Acción rápida invocable por el usuario | `/hugo-serve` para arrancar servidor de desarrollo |
 | **Subagente** | Tarea especializada delegable | Un subagente "HugoConfigurator" para el diálogo interactivo de `hugo.toml` |
-| **Workflow (context)** | Secuencia de pasos con decisiones | Capacidades C1-C10 (`recursos/flujos/capacidades-oca-hugo.md`) |
+| **Workflow (context)** | Secuencia de pasos con decisiones | Capacidades C1-C10 (`recursos/flujos/01_capacidades-oca-hugo.md`) |
 | **Prompt (P)** | Instrucción textual para el agente | No usado en REPOC — el usuario expresa intención en lenguaje natural |
 
 ### Filosofía

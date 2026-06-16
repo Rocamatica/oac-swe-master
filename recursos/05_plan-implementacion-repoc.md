@@ -27,15 +27,15 @@
 
 ## Fase 2: Actualizar documentos
 
-- [x] **2.1** — Actualizar `recursos/recapitulacion-entendimiento-openagent.md` (reglas 1-5 extraídas, G7-G12 añadidas, "preparar OAC primero" añadido a arquitectura)
-- [x] **2.2** — Actualizar `recursos/seleccion-herramientas-hugo-oac.md` (eliminado GH CI/CD, sección 8 reescrita, referencias actualizadas)
-- [x] **2.3** — Crear `recursos/flujos/capacidades-oca-hugo.md` (10 capacidades: C1-C10, mapeo intención→capacidad)
+- [x] **2.1** — Actualizar `recursos/01_recapitulacion-entendimiento-openagent.md` (reglas 1-5 extraídas, G7-G12 añadidas, "preparar OAC primero" añadido a arquitectura)
+- [x] **2.2** — Actualizar `recursos/02_seleccion-herramientas-hugo-oac.md` (eliminado GH CI/CD, sección 8 reescrita, referencias actualizadas)
+- [x] **2.3** — Crear `recursos/flujos/01_capacidades-oca-hugo.md` (10 capacidades: C1-C10, mapeo intención→capacidad)
 - [x] **2.4** — Revisar qué otros documentos requieren actualización (actualizada sección 8→capacidades, sección 9→nuevo modelo intención, tabla estado→flujo Hugo) 
 
 ## Fase 3: Instalación de herramientas
 
-**Basado en**: `recursos/seleccion-herramientas-hugo-oac-validado.md`
-**No instalados**: `recursos/seleccion-herramientas-hugo-oac-no-validado.md`
+**Basado en**: `recursos/03_seleccion-herramientas-hugo-oac-validado.md`
+**No instalados**: `recursos/04_seleccion-herramientas-hugo-oac-no-validado.md`
 
 ### Lote 1 — npm global
 
@@ -74,7 +74,7 @@ Lo instalado en Fase 3 NO viaja al clonar REPOC → REPON (npm global, venvs con
 
 ## Fase 4: Habilidades OAC (skills + subagentes + contextos)
 
-**Basado en**: `recursos/seleccion-herramientas-hugo-oac-validado.md` y `recursos/flujos/capacidades-oca-hugo.md`
+**Basado en**: `recursos/03_seleccion-herramientas-hugo-oac-validado.md` y `recursos/flujos/01_capacidades-oca-hugo.md`
 
 ### Skills (`.opencode/skills/`)
 
@@ -106,6 +106,28 @@ Lo instalado en Fase 3 NO viaja al clonar REPOC → REPON (npm global, venvs con
 - [ ] **5.1** — Verificar que REPOC se puede clonar y OCA tiene todas las capacidades
 - [ ] **5.2** — Probar flujo completo: "crea proyecto" → "configura" → "crea contenido" → "build" → "deploy"
 - [ ] **5.3** — Documentar estado final
+
+## Fase 6: Guías de usuario
+
+Documentación para el usuario final del REPOC. Instrucciones paso a paso sobre qué hacer después de clonar, cómo usar cada capacidad, ejemplos prácticos.
+
+| # | Guía | Archivo | Propósito |
+|---|------|---------|-----------|
+| 6.1 | Inicio rápido | `recursos/guias/01_inicio-rapido.md` | Clonar, instalar herramientas, primer proyecto |
+| 6.2 | Crear y configurar proyecto | `recursos/guias/02_crear-proyecto.md` | Usar OCA para `hugo new site`, configurar `hugo.toml`, temas |
+| 6.3 | Gestión de contenido | `recursos/guias/04_gestion-contenido.md` | Páginas, artículos, assets con hugo-mcp |
+| 6.4 | SEO, búsqueda y calidad | `recursos/guias/06_calidad-seo-busqueda.md` | Pagefind, agentic-seo, seofor.dev, hugo-docs-mcp |
+| 6.5 | Skills y comandos OCA | `recursos/guias/05_skills-comandos.md` | Catálogo de skills, `/hugo-deploy`, subagentes |
+| 6.6 | Módulos HugoMods | `recursos/guias/03_modulos-hugomods.md` | SEO, Images, PWA, Icons, Analytics, Bootstrap |
+| 6.7 | CMS y Decap | `recursos/guias/07_cms-decap.md` | Configurar CMS visual, OAuth, edición vía web |
+
+- [x] **6.1** — `01_inicio-rapido.md` (229 líneas)
+- [x] **6.2** — `02_crear-proyecto.md` (243 líneas)
+- [x] **6.3** — `04_gestion-contenido.md` (320 líneas)
+- [x] **6.4** — `06_calidad-seo-busqueda.md` (324 líneas)
+- [x] **6.5** — `05_skills-comandos.md` (254 líneas)
+- [x] **6.6** — `03_modulos-hugomods.md` (277 líneas)
+- [x] **6.7** — `07_cms-decap.md` (293 líneas)
 
 ---
 

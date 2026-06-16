@@ -180,6 +180,6 @@ Cada capacidad se activa por **intención del usuario**, no por orden preestable
 
 ## Referencias
 
-- `recursos/seleccion-herramientas-hugo-oac.md` — Detalle de cada herramienta seleccionada
-- `recursos/recapitulacion-entendimiento-openagent.md` — Documento fundacional
+- `recursos/02_seleccion-herramientas-hugo-oac.md` — Detalle de cada herramienta seleccionada
+- `recursos/01_recapitulacion-entendimiento-openagent.md` — Documento fundacional
 - `.opencode/external-context/hugo/` — Contexto técnico de Hugo
