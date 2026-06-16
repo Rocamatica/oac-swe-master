@@ -11,6 +11,7 @@
 Estado actual:
 - ✅ Perfil completo (full) instalado
 - ✅ Contexto de OAC descubierto (208 archivos en `.opencode/context/`)
+- ✅ Contexto OAC completo (7 fichas técnicas en `.opencode/external-context/oac/` vía ExternalScout)
 - ✅ Contexto Hugo completo (13 fichas técnicas en `.opencode/external-context/hugo/`)
 - ⚠️ Contexto de Cloudflare pendiente — se necesita ExternalScout para documentación actualizada
 
