@@ -58,6 +58,7 @@ Reglas:
 - El usuario interactúa **exclusivamente con OpenAgent**
 - OpenAgent gestiona **todo**: instalación, configuración, contenido, build, deploy
 - **Nunca se ejecutan comandos Hugo directamente** — todo se canaliza a través de OAC
+- **Preparar OAC primero** — antes de gestionar Hugo, verificar que el contexto está completo (`.opencode/external-context/hugo/`) y sin gaps
 - Cualquier cambio en configuración o estructura de Hugo se canaliza por OAC para mantener coherencia de contexto
 
 ---
@@ -113,6 +114,12 @@ oac-swe-master                          nombre-del-proyecto
 | G4 | Reglas G1-G3 aplican a **todos los prompts y respuestas, siempre** | `reglas-abreviaciones.txt` |
 | G5 | **Siempre la última versión estable** de los componentes requeridos. Confirmar/verificar que sean **funcionales y no betas** | Corrección del usuario (punto 4) |
 | G6 | **No todo son prompts (P)** — usar artefactos y ventajas de OAC: skills, contextos, comandos, subagentes | Corrección del usuario (punto 3) |
+| G7 | **Explicar como tutorial paso a paso**. No adelantarse a lo que el usuario pregunta. Responder solo a lo preguntado, sin información no solicitada | `reglas-oac-hugo.md` |
+| G8 | **No ejecutar sin preguntar ni confirmar**. Antes de cualquier acción (instalar, modificar, crear archivos), preguntar primero y esperar confirmación explícita | `reglas-oac-hugo.md` |
+| G9 | **Guardar el conocimiento obtenido** de Context7, ExternalScout o cualquier fuente externa en `.opencode/external-context/<tema>/` para que esté disponible en consultas futuras | `reglas-oac-hugo.md` |
+| G10 | **OAC gestiona todo el trabajo con Hugo**. El usuario interactúa exclusivamente con OAC. OAC gestiona instalación, configuración, contenido, build y despliegue. Todo cambio se canaliza a través de OAC | `reglas-oac-hugo.md` |
+| G11 | **No duplicar información**. Cada contenido una sola vez en un único archivo. Si un contenido es necesario desde otro lugar, usar referencias (enlaces, citas) sin copiar | `reglas-oac-hugo.md` |
+| G12 | **Preparar OAC primero**. Antes de gestionar Hugo, verificar que el contexto está completo en `.opencode/external-context/hugo/` y que no hay gaps | `reglas-oac-hugo.md` |
 
 ### En una frase
 

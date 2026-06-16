@@ -8,17 +8,26 @@
 
 ---
 
-## Fase 1: Limpieza de obsoletos
+## Fase 1: Limpieza de obsoletos ✅
 
-- [ ] **1.1** — ContextScout para identificar archivos obsoletos → proponer para aprobación
-- [ ] **1.2** — Eliminar `en_des/desarrollando-oac-hugo/` (completo)
-- [ ] **1.3** — Eliminar `recursos/flujos/triada-usuario-oac-hugo.md` (obsoleto)
-- [ ] **1.4** — Eliminar `recursos/prompts/01-P-iniciar-sitio-hugo.md` (obsoleto)
-- [ ] **1.5** — Eliminar otros archivos identificados por ContextScout
+- [x] **1.1** — ContextScout para identificar archivos obsoletos → propuesta aprobada
+- [x] **1.2** — Eliminar `en_des/desarrollando-oac-hugo/` (completo)
+- [x] **1.3** — Eliminar `recursos/flujos/triada-usuario-oac-hugo.md`
+- [x] **1.4** — Eliminar `recursos/prompts/01-P-iniciar-sitio-hugo.md`
+- [x] **1.5** — Eliminar otros archivos identificados:
+  - `recursos/flujos/interaccion-dinamica-inicializar-hugo.md`
+  - `.opencode/external-context/astro/` (7 archivos)
+  - `en_des/preparacion-inicial/legado/` (2 archivos)
+  - `en_des/preparacion-inicial/notas/` (10 archivos)
+  - `en_des/preparacion-inicial/analisis-hugo.md`
+  - `en_des/preparacion-inicial/definiciones-pyt-swe-oac-cf.md`
+  - `en_des/preparacion-inicial/reglas-oac-hugo.md` (reglas 1-5 extraídas a recapitulación)
+  - `en_des/prompts-ej-otros-pyt/` (15 archivos)
+  - `.opencode/skills/smart-router-skill/`
 
 ## Fase 2: Actualizar documentos
 
-- [ ] **2.1** — Actualizar `recursos/recapitulacion-entendimiento-openagent.md` (nueva visión)
+- [x] **2.1** — Actualizar `recursos/recapitulacion-entendimiento-openagent.md` (reglas 1-5 extraídas, G7-G12 añadidas, "preparar OAC primero" añadido a arquitectura)
 - [ ] **2.2** — Actualizar `recursos/seleccion-herramientas-hugo-oac.md` (quitar GH CI/CD + ajustes)
 - [ ] **2.3** — Crear `recursos/flujos/capacidades-oca-hugo.md` (sustituye a la triada obsoleta)
 - [ ] **2.4** — Revisar qué otros documentos requieren actualización (ContextScout)
