@@ -1,0 +1,36 @@
+{
+  "library": "hugo",
+  "fetched": "2026-06-16T00:00:00Z",
+  "source": "Context7 API",
+  "official_docs": "https://gohugo.io/documentation/",
+  "files": [
+    {
+      "filename": "archetypes.md",
+      "topic": "Archetypes",
+      "description": "Creación, estructura, ejemplos y orden de búsqueda de archetypes",
+      "fetched": "2026-06-16T00:00:00Z",
+      "source": "Context7 API"
+    },
+    {
+      "filename": "configuration.md",
+      "topic": "Configuration",
+      "description": "Configuración base hugo.toml, variables principales, multilingüe, menús, config directory",
+      "fetched": "2026-06-16T00:00:00Z",
+      "source": "Context7 API"
+    },
+    {
+      "filename": "directory-structure.md",
+      "topic": "Directory Structure",
+      "description": "Estructura completa del proyecto, propósito de cada directorio, secciones en content/",
+      "fetched": "2026-06-16T00:00:00Z",
+      "source": "Context7 API"
+    },
+    {
+      "filename": "templates.md",
+      "topic": "Templates",
+      "description": "Jerarquía de plantillas: baseof, home, single, list, partials, lookup order, front matter",
+      "fetched": "2026-06-16T00:00:00Z",
+      "source": "Context7 API"
+    }
+  ]
+}

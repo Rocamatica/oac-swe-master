@@ -40,7 +40,7 @@ Main Agent (OpenAgent, etc.)
   ↓
   4. Call ExternalScout for external docs
      - ExternalScout fetches from Context7 API
-     - ExternalScout persists to .tmp/external-context/
+     - ExternalScout persists to .opencode/external-context/
      - ExternalScout returns file paths
   ↓
   5. Capture returned file paths
@@ -118,7 +118,7 @@ TaskManager / CoderAgent / TestEngineer
   ↓
   2. Extract "## External Context Fetched" section
   ↓
-  3. Read referenced files from .tmp/external-context/
+  3. Read referenced files from .opencode/external-context/
   ↓
   4. Use external docs to inform implementation
   ↓
@@ -146,15 +146,15 @@ task(
           - Better Auth: Next.js integration
           - Next.js: App Router setup
           
-          Persist fetched docs to .tmp/external-context/
+          Persist fetched docs to .opencode/external-context/
           Return file paths for each fetched document"
 )
 
 // Capture returned file paths
 // Example return:
-// - .tmp/external-context/drizzle-orm/modular-schemas.md
-// - .tmp/external-context/better-auth/nextjs-integration.md
-// - .tmp/external-context/next.js/app-router-setup.md
+// - .opencode/external-context/drizzle-orm/modular-schemas.md
+// - .opencode/external-context/better-auth/nextjs-integration.md
+// - .opencode/external-context/next.js/app-router-setup.md
 ```
 
 ### Step 2: Propose Plan with External Context
@@ -170,9 +170,9 @@ task(
 - Next.js (framework)
 
 **External Context Discovered**:
-- `.tmp/external-context/drizzle-orm/modular-schemas.md`
-- `.tmp/external-context/better-auth/nextjs-integration.md`
-- `.tmp/external-context/next.js/app-router-setup.md`
+- `.opencode/external-context/drizzle-orm/modular-schemas.md`
+- `.opencode/external-context/better-auth/nextjs-integration.md`
+- `.opencode/external-context/next.js/app-router-setup.md`
 
 **Approach**:
 1. Set up Drizzle schema with modular organization
@@ -209,16 +209,16 @@ Set up Drizzle ORM with Better Auth in a Next.js application
 These are live documentation files fetched from external libraries. Subagents should reference these instead of re-fetching.
 
 ### Drizzle ORM
-- `.tmp/external-context/drizzle-orm/modular-schemas.md` — Schema organization patterns for modular architecture
-- `.tmp/external-context/drizzle-orm/postgresql-setup.md` — PostgreSQL configuration and setup
+- `.opencode/external-context/drizzle-orm/modular-schemas.md` — Schema organization patterns for modular architecture
+- `.opencode/external-context/drizzle-orm/postgresql-setup.md` — PostgreSQL configuration and setup
 
 ### Better Auth
-- `.tmp/external-context/better-auth/nextjs-integration.md` — Integration guide for Next.js App Router
-- `.tmp/external-context/better-auth/drizzle-adapter.md` — Drizzle adapter setup and configuration
+- `.opencode/external-context/better-auth/nextjs-integration.md` — Integration guide for Next.js App Router
+- `.opencode/external-context/better-auth/drizzle-adapter.md` — Drizzle adapter setup and configuration
 
 ### Next.js
-- `.tmp/external-context/next.js/app-router-setup.md` — App Router basics and configuration
-- `.tmp/external-context/next.js/server-actions.md` — Server Actions patterns for mutations
+- `.opencode/external-context/next.js/app-router-setup.md` — App Router basics and configuration
+- `.opencode/external-context/next.js/server-actions.md` — Server Actions patterns for mutations
 
 **Important**: These files are read-only and cached for reference. Do not modify them.
 
@@ -290,10 +290,10 @@ TaskManager creates subtask JSONs like:
     "src/db/schema.ts"
   ],
   "external_context": [
-    ".tmp/external-context/drizzle-orm/modular-schemas.md",
-    ".tmp/external-context/drizzle-orm/postgresql-setup.md"
+    ".opencode/external-context/drizzle-orm/modular-schemas.md",
+    ".opencode/external-context/drizzle-orm/postgresql-setup.md"
   ],
-  "instructions": "Set up Drizzle schema following modular patterns from external context. Reference .tmp/external-context/drizzle-orm/modular-schemas.md for best practices.",
+  "instructions": "Set up Drizzle schema following modular patterns from external context. Reference .opencode/external-context/drizzle-orm/modular-schemas.md for best practices.",
   "acceptance_criteria": [
     "Schema organized into separate files by domain",
     "PostgreSQL configuration matches external docs",
@@ -335,7 +335,7 @@ CoderAgent reads subtask JSON and:
 ### For ExternalScout
 
 ✅ **DO**:
-- Always persist fetched docs to `.tmp/external-context/`
+- Always persist fetched docs to `.opencode/external-context/`
 - Update `.manifest.json` after each fetch
 - Include metadata header in every file
 - Filter aggressively to relevant sections
@@ -346,7 +346,7 @@ CoderAgent reads subtask JSON and:
 - Skip manifest updates
 - Return entire documentation
 - Fabricate documentation content
-- Write outside `.tmp/external-context/`
+- Write outside `.opencode/external-context/`
 
 ### For TaskManager
 
@@ -400,7 +400,7 @@ CoderAgent reads subtask JSON and:
 1. **Detect**: Drizzle, Better Auth, Next.js
 2. **Fetch**: Get docs from Context7 API
 3. **Filter**: Extract relevant sections
-4. **Persist**: Write to `.tmp/external-context/{package}/{topic}.md`
+4. **Persist**: Write to `.opencode/external-context/{package}/{topic}.md`
 5. **Update**: Add to `.manifest.json`
 6. **Return**: File paths to main agent
 
@@ -426,7 +426,7 @@ CoderAgent reads subtask JSON and:
 
 ### External Context Files Not Found
 
-**Problem**: Subagent can't find `.tmp/external-context/{package}/{topic}.md`
+**Problem**: Subagent can't find `.opencode/external-context/{package}/{topic}.md`
 
 **Solution**:
 1. Check ExternalScout ran successfully

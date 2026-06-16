@@ -61,7 +61,7 @@ Project files relevant to the task — NOT standards.
 
 ## External Context Fetched
 Live docs fetched via ExternalScout. Read-only cache.
-- `.tmp/external-context/{package}/{topic}.md` — {description}
+- `.opencode/external-context/{package}/{topic}.md` — {description}
 
 ## Components
 - {Component 1} — {what it does}
@@ -114,7 +114,7 @@ task(
 |-------|----------|---------|
 | `context_files` | **Standards only** | `.opencode/context/core/standards/code-quality.md` |
 | `reference_files` | **Source material only** | `src/auth/service.ts` |
-| `external_context` | **External docs only** (read-only) | `.tmp/external-context/drizzle/schemas.md` |
+| `external_context` | **External docs only** (read-only) | `.opencode/external-context/drizzle/schemas.md` |
 
 **Never mix them.** Standards vs source material vs external docs.
 

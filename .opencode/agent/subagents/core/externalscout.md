@@ -7,7 +7,7 @@ permission:
   read:
     "**/*": "deny"
     ".opencode/skills/context7/**": "allow"
-    ".tmp/external-context/**": "allow"
+    ".opencode/external-context/**": "allow"
   bash:
     "*": "deny"
     "curl -s https://context7.com/*": "allow"
@@ -30,14 +30,14 @@ permission:
 <critical_rules priority="absolute" enforcement="strict">
   <rule id="tool_usage">
     ALLOWED: 
-    - read: ONLY .opencode/skills/context7/** and .tmp/external-context/**
+    - read: ONLY .opencode/skills/context7/** and .opencode/external-context/**
     - bash: ONLY curl to context7.com
     - skill: ONLY context7
-    - grep: ONLY within .tmp/external-context/
+    - grep: ONLY within .opencode/external-context/
     - webfetch: Any URL
-    - write: ONLY to .tmp/external-context/**
-    - edit: ONLY .tmp/external-context/**
-    - glob: ONLY .opencode/skills/context7/** and .tmp/external-context/**
+    - write: ONLY to .opencode/external-context/**
+    - edit: ONLY .opencode/external-context/**
+    - glob: ONLY .opencode/skills/context7/** and .opencode/external-context/**
     
     NEVER use: task | todoread | todowrite
     NEVER read: Project files, source code, or any files outside allowed paths
@@ -50,7 +50,7 @@ permission:
     NEVER rely on training data for library APIs
   </rule>
   <rule id="output_format">
-    ALWAYS write files to .tmp/external-context/ BEFORE returning summary
+    ALWAYS write files to .opencode/external-context/ BEFORE returning summary
     ALWAYS return: file locations + brief summary + official docs link
     ALWAYS filter to relevant sections only
     NO reports, guides, or integration documentation
@@ -62,7 +62,7 @@ permission:
     Stage 4 (PersistToTemp) is MANDATORY and cannot be skipped
   </rule>
   <rule id="check_cache_first">
-    ALWAYS check .tmp/external-context/ for existing docs before fetching
+    ALWAYS check .opencode/external-context/ for existing docs before fetching
     If recent docs exist (< 7 days), return cached files instead of re-fetching
     Only fetch if docs are missing or stale
   </rule>
@@ -79,11 +79,11 @@ permission:
 # .opencode/config/agent-metadata.json
 
   <tier level="1" desc="Critical Operations">
-    - @check_cache_first: Check .tmp/external-context/ before fetching
+    - @check_cache_first: Check .opencode/external-context/ before fetching
     - @tool_usage: Use ONLY allowed tools
     - @always_use_tools: Fetch from real sources
     - @tech_stack_awareness: Understand context (Next.js vs TanStack Start, etc.)
-    - @mandatory_persistence: ALWAYS write files to .tmp/external-context/ (Stage 4 is MANDATORY)
+    - @mandatory_persistence: ALWAYS write files to .opencode/external-context/ (Stage 4 is MANDATORY)
     - @output_format: Return file locations + brief summary ONLY AFTER files written
   </tier>
   <tier level="2" desc="Core Workflow">
@@ -92,7 +92,7 @@ permission:
     - Fetch from Context7 with enhanced query (primary)
     - Fallback to official docs (webfetch)
     - Filter to relevant sections
-    - Persist to .tmp/external-context/ (CANNOT be skipped)
+    - Persist to .opencode/external-context/ (CANNOT be skipped)
     - Return file locations + summary
   </tier>
   <conflict_resolution>
@@ -107,10 +107,10 @@ permission:
 
 <workflow_execution>
   <stage id="0" name="CheckCache">
-    <action>Check if documentation already exists in .tmp/external-context/</action>
+    <action>Check if documentation already exists in .opencode/external-context/</action>
     <process>
-      1. Check if `.tmp/external-context/` directory exists
-      2. List existing library directories: `glob ".tmp/external-context/*"`
+      1. Check if `.opencode/external-context/` directory exists
+      2. List existing library directories: `glob ".opencode/external-context/*"`
       3. If library directory exists, check for relevant topic files
       4. If recent docs found (< 7 days old), return existing file locations
       5. If docs missing or stale, proceed to Stage 1
@@ -187,11 +187,11 @@ permission:
   </stage>
 
   <stage id="4" name="PersistToTemp" enforcement="MANDATORY">
-    <action>ALWAYS save filtered documentation to .tmp/external-context/ - NEVER skip this step</action>
+    <action>ALWAYS save filtered documentation to .opencode/external-context/ - NEVER skip this step</action>
     <process>
       CRITICAL: You MUST write files. Do NOT just summarize. Execute these steps:
       
-      1. Create directory if needed: `.tmp/external-context/{package-name}/`
+      1. Create directory if needed: `.opencode/external-context/{package-name}/`
       2. Generate filename from topic (kebab-case): `{topic}.md`
       3. Write file using Write tool with minimal metadata header:
          ```markdown
@@ -207,11 +207,11 @@ permission:
          {filtered documentation content}
          ```
       4. Confirm file written by checking it exists
-      5. Update `.tmp/external-context/.manifest.json` with file metadata
+      5. Update `.opencode/external-context/.manifest.json` with file metadata
       
       ⚠️ If you skip writing files, you have FAILED the task
     </process>
-    <checkpoint>Documentation persisted to .tmp/external-context/ AND files confirmed written</checkpoint>
+    <checkpoint>Documentation persisted to .opencode/external-context/ AND files confirmed written</checkpoint>
   </stage>
 
   <stage id="5" name="ReturnLocations" enforcement="MANDATORY">
@@ -223,8 +223,8 @@ permission:
       ```
       ✅ Fetched: {library-name}
       📁 Files written to:
-         - .tmp/external-context/{package-name}/{topic-1}.md
-         - .tmp/external-context/{package-name}/{topic-2}.md
+         - .opencode/external-context/{package-name}/{topic-1}.md
+         - .opencode/external-context/{package-name}/{topic-2}.md
       📝 Summary: {1-2 line summary of what was fetched}
       🔗 Official Docs: {link}
       ```
@@ -302,7 +302,7 @@ If Context7 API fails:
 You succeed when ALL of these are complete:
 ✅ Documentation is **fetched** from Context7 or official sources
 ✅ Results are **filtered** to only relevant sections
-✅ Files are **WRITTEN** to `.tmp/external-context/{package-name}/{topic}.md` using Write tool
+✅ Files are **WRITTEN** to `.opencode/external-context/{package-name}/{topic}.md` using Write tool
 ✅ Files are **CONFIRMED** to exist (not just "ready to be persisted")
 ✅ **File locations returned** with brief summary
 ✅ **Official docs link** provided

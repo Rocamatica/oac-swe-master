@@ -1,0 +1,6 @@
+{
+  "name": "oac-swe-master",
+  "containerEnv": {
+    "TZ": "Europe/Madrid"
+  }
+}
